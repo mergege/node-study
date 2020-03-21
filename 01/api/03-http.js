@@ -7,7 +7,7 @@ http.createServer((request, response) => {
   // console.log(getProtoTypeChain(response))
   // response.end('hello node')
   // 读取index.html
-  const {url, method} = request
+  const {url, method, headers} = request
   console.log(url, method)
   if(url === '/' && method === 'GET') {
     fs.readFile('./index.html',(err, data) => {
@@ -20,6 +20,13 @@ http.createServer((request, response) => {
       response.setHeader('Content-Type', 'text/html')
       response.end(data)
     } )
+  } else if (url === '/users' && method === 'GET') {
+    response.writeHead(200, {'Content-Type': 'application/json'})
+    response.end(JSON.stringify([{name: 'tom'}]))
+  } else if (method === 'GET' && headers.accept.indexOf('image/*') != -1) {
+    console.log('请求图片')
+    // response也是一个流
+    fs.createReadStream('.' + url).pipe(response)
   }
 })
 .listen(3000)
