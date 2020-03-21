@@ -1,0 +1,23 @@
+{
+  "name": "nond-study",
+  "version": "1.0.0",
+  "description": "node初始化",
+  "main": "index.js",
+  "dependencies": {
+    "jest": "^25.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mergege/node-study.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mergege/node-study/issues"
+  },
+  "homepage": "https://github.com/mergege/node-study#readme"
+}
