@@ -20,7 +20,7 @@ module.exports = async name => {
   // 安装依赖
   log('安装依赖')
   log(process.platform)
-  await spawn('npm.cmd', ['install'],{cwd: `./${name}`})
+  await spawn('npm', ['install'], { cwd: `./${name}` })
   log(`
   =========
     依赖安装成功
@@ -28,7 +28,7 @@ module.exports = async name => {
   `)
   // 打开浏览器
   open('http://localhost:8080')
-  await spawn('npm.cmd', ['run','serve'], {cwd: `/${name}`})
+  await spawn('npm', ['run', 'serve'], { cwd: `/${name}` })
 }
 
 // 安装依赖 spwan子进程安装依赖不会输出依赖，所以要写方法对接，日志是流的方式
@@ -45,4 +45,3 @@ function spawn(...args) {
     })
   })
 }
-
