@@ -4,19 +4,21 @@ const chalk = require('chalk')
 
 module.exports = async () => {
   // 获取vue文件列表
-  const vueList = fs
+
+  const list = fs
     .readdirSync('./src/views')
     .filter(v => v !== 'Home.vue')
     .map(v => ({
       name: v.replace('.vue', '').toLowerCase(),
       file: v
     }))
-  console.log(chalk.red(vueList))
+  console.log(chalk.red(JSON.stringify(list)))
 
   // 生成路由定义
-  compile({ vueList }, './src/router.js', './template/router.js.hbs')
+  // 巨坑：这里的compile的第一个参数必须与模版一致list
+  compile({ list }, './src/router.js', './template/router.js.hbs')
   //生产导航App.vue
-  compile({ vueList }, './src/App.vue', './template/App.vue.hbs')
+  compile({ list }, './src/App.vue', './template/App.vue.hbs')
   /**
    * 编译模版文件
    * @param {*} meta 数据定义
@@ -29,6 +31,7 @@ module.exports = async () => {
       const result = handlebars.compile(content)(meta)
       console.log(result)
       console.log(filePath)
+      fs.writeFileSync('./src/aaa.js', result)
       fs.writeFileSync(filePath, result)
     }
   }
