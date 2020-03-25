@@ -4,7 +4,8 @@
   "description": "node初始化",
   "main": "index.js",
   "dependencies": {
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "koa": "^2.11.0"
   },
   "devDependencies": {},
   "scripts": {
