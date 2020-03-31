@@ -1,4 +1,4 @@
-// tcp/ip用net包
+// tcp/ip用net包,后续会用socket.io库代替
 
 const net = require('net')
 
